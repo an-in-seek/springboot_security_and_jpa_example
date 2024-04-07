@@ -13,19 +13,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/posts")
-public class PostController {
+@RequestMapping("/api/v1/admin/posts")
+public class PostAdminController {
 
     private final PostService postService;
 
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured("ROLE_ADMIN")
     @GetMapping("/{id}")
     public ResponseEntity<PostResponse> getPost(@PathVariable long id) {
         PostResponse postResponse = postService.getPostResponse(id).orElse(null);
         return ResponseEntity.ok(postResponse);
     }
 
-    @Secured({"ROLE_ADMIN", "ROLE_USER"})
+    @Secured("ROLE_ADMIN")
     @GetMapping
     public ResponseEntity<List<PostResponse>> getPostList() {
         List<PostResponse> postResponseList = postService.getPostResponseList();
