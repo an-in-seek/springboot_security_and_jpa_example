@@ -1,10 +1,10 @@
-# Spring Boot Java 어플리케이션
+# Spring Boot + Security + JPA Example
 
-이것은 Java로 작성된 Spring Boot 어플리케이션의 샘플입니다. Spring Security를 사용하여 인증 및 권한 부여를 구현한 예제입니다.
+이것은 Java로 작성된 Spring Boot 어플리케이션의 샘플입니다. Spring Security와 Spring Data JPA를 사용하여 구현한 백엔드 API 예제입니다.
 
 ## 개요
 
-이 어플리케이션은 회원 관리를 위한 RESTful API를 제공합니다. 사용자 인증, 역할 기반 접근 제어 및 회원 엔터티에 대한 CRUD 기능을 포함하고 있습니다.
+이 어플리케이션은 회원 및 게시물 관리를 위한 RESTful API를 제공합니다. 사용자 인증, 역할 기반 접근 제어 및 회원, 게시물 엔터티에 대한 CRUD 기능을 포함하고 있습니다.
 
 ## 사전 준비 사항
 
@@ -31,6 +31,12 @@
 - **PUT /api/v1/members/{username}**: 기존 회원을 수정합니다.
 - **GET /api/v1/members/{username}**: 특정 회원의 상세 정보를 조회합니다.
 
+### 게시물 관리 (ROLE_ADMIN, ROLE_USER 권한 필요)
+
+- **GET /api/v1/posts/{id}**: 특정 게시물의 상세 정보를 조회합니다.
+- **GET /api/v1/posts**: 모든 게시물의 목록을 조회합니다.
+-
+
 ## 보안 구성
 
 보안 구성은 `SecurityConfig.java`에서 정의되어 있으며 다음과 같은 내용을 포함합니다:
@@ -49,7 +55,27 @@
 
 - **MemberAdminController**: 회원 관리에 대한 관리 작업을 담당합니다.
 - **MemberController**: 회원에 대한 기본 CRUD 작업을 관리합니다.
+- **PostController**: 게시물 관리에 대한 기본 CRUD 작업을 관리합니다.
 
 ### 회원 엔터티
 
 `Member` 클래스는 어플리케이션에서 사용되는 사용자 엔터티를 나타냅니다. Spring Security와의 통합을 위해 UserDetails 인터페이스를 구현하며 사용자명, 비밀번호, 닉네임, 역할, 활성화 상태 및 감사 필드 등의 속성을 포함하고 있습니다.
+
+### 게시물 엔터티
+
+`Post` 클래스는 어플리케이션에서 사용되는 게시물 엔터티를 나타냅니다. 게시물의 제목, 내용, 작성자 등의 속성을 포함하고 있습니다.
+
+## Gradle 의존성
+
+```groovy
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    runtimeOnly 'com.h2database:h2'
+}
+```
+
+위의 코드는 프로젝트에 필요한 Gradle 의존성을 정의하고 있습니다. 해당 의존성을 프로젝트의 build.gradle 파일에 추가해주세요.
