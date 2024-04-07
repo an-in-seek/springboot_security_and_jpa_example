@@ -31,14 +31,16 @@ public class MemberService implements UserDetailsService {
 
     @Transactional
     public Member updateMember(String username, MemberRequest memberRequest) {
-        Member member = getMember(username).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Member member = getMember(username)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         member.update(MemberMapper.toEntity(memberRequest));
         return memberRepository.save(member);
     }
 
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return memberRepository.findById(username).orElseThrow(() -> new UsernameNotFoundException("Not Found Member."));
+        return memberRepository.findById(username)
+            .orElseThrow(() -> new UsernameNotFoundException("Not Found Member."));
     }
 
     @Transactional(readOnly = true)
@@ -48,13 +50,15 @@ public class MemberService implements UserDetailsService {
 
     @Transactional(readOnly = true)
     public Optional<MemberResponse> getMemberResponse(String username) {
-        return memberRepository.findById(username).map(MemberMapper::toResponse);
+        return memberRepository.findById(username)
+            .map(MemberMapper::toResponse);
     }
 
     @Transactional(readOnly = true)
     public List<MemberResponse> getMemberResponseList() {
-        return memberRepository.findAll().stream().map(MemberMapper::toResponse).collect(Collectors.toList());
+        return memberRepository.findAll()
+            .stream()
+            .map(MemberMapper::toResponse)
+            .collect(Collectors.toList());
     }
-
-
 }

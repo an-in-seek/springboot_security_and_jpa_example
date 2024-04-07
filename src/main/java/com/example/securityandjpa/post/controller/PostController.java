@@ -23,7 +23,8 @@ public class PostController {
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/{id}")
     public ResponseEntity<PostResponse> getPost(@PathVariable long id) {
-        PostResponse postResponse = postService.getPostResponse(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        PostResponse postResponse = postService.getPostResponse(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return ResponseEntity.ok(postResponse);
     }
 

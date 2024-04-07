@@ -28,11 +28,15 @@ public class PostService {
 
     @Transactional(readOnly = true)
     public Optional<PostResponse> getPostResponse(long id) {
-        return postRepository.findById(id).map(PostMapper::toResponse);
+        return postRepository.findById(id)
+            .map(PostMapper::toResponse);
     }
 
     @Transactional(readOnly = true)
     public List<PostResponse> getPostResponseList() {
-        return postRepository.findAll().stream().map(PostMapper::toResponse).collect(Collectors.toList());
+        return postRepository.findAll()
+            .stream()
+            .map(PostMapper::toResponse)
+            .collect(Collectors.toList());
     }
 }
