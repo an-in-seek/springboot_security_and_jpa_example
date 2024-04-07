@@ -1,11 +1,11 @@
 package com.example.securityandjpa.config;
 
-import com.example.securityandjpa.domain.Post;
-import com.example.securityandjpa.domain.Role;
-import com.example.securityandjpa.request.MemberRequest;
-import com.example.securityandjpa.service.CommentService;
-import com.example.securityandjpa.service.MemberService;
-import com.example.securityandjpa.service.PostService;
+import com.example.securityandjpa.member.domain.Role;
+import com.example.securityandjpa.member.dto.MemberRequest;
+import com.example.securityandjpa.member.service.MemberService;
+import com.example.securityandjpa.post.domain.Post;
+import com.example.securityandjpa.post.service.CommentService;
+import com.example.securityandjpa.post.service.PostService;
 import java.util.stream.IntStream;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
@@ -33,7 +33,7 @@ public class DatabaseLoader implements CommandLineRunner {
             .nickname("관리자")
             .role(Role.ADMIN)
             .build();
-        memberService.createUser(admin);
+        memberService.createMember(admin);
 
         MemberRequest user = MemberRequest.builder()
             .username("user")
@@ -41,7 +41,7 @@ public class DatabaseLoader implements CommandLineRunner {
             .nickname("사용자")
             .role(Role.USER)
             .build();
-        UserDetails userDetails = memberService.createUser(user);
+        UserDetails userDetails = memberService.createMember(user);
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, userDetails.getPassword(),
             userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);

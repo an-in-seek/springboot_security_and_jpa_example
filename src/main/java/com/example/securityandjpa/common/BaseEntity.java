@@ -1,5 +1,6 @@
-package com.example.securityandjpa.domain;
+package com.example.securityandjpa.common;
 
+import com.example.securityandjpa.member.domain.Member;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;

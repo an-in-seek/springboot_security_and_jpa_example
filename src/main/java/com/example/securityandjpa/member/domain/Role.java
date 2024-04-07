@@ -1,4 +1,4 @@
-package com.example.securityandjpa.domain;
+package com.example.securityandjpa.member.domain;
 
 import lombok.Getter;
 

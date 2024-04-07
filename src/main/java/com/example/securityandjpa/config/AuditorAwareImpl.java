@@ -1,6 +1,6 @@
 package com.example.securityandjpa.config;
 
-import com.example.securityandjpa.domain.Member;
+import com.example.securityandjpa.member.domain.Member;
 import java.util.Optional;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;

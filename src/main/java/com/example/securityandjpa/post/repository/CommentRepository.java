@@ -1,6 +1,6 @@
-package com.example.securityandjpa.repository;
+package com.example.securityandjpa.post.repository;
 
-import com.example.securityandjpa.domain.Comment;
+import com.example.securityandjpa.post.domain.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

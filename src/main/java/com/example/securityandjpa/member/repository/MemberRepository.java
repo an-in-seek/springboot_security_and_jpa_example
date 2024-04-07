@@ -1,6 +1,6 @@
-package com.example.securityandjpa.repository;
+package com.example.securityandjpa.member.repository;
 
-import com.example.securityandjpa.domain.Member;
+import com.example.securityandjpa.member.domain.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

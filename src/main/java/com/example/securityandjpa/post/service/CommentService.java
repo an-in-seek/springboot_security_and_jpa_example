@@ -1,8 +1,8 @@
-package com.example.securityandjpa.service;
+package com.example.securityandjpa.post.service;
 
-import com.example.securityandjpa.domain.Comment;
-import com.example.securityandjpa.domain.Post;
-import com.example.securityandjpa.repository.CommentRepository;
+import com.example.securityandjpa.post.domain.Comment;
+import com.example.securityandjpa.post.domain.Post;
+import com.example.securityandjpa.post.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

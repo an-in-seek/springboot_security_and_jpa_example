@@ -1,6 +1,6 @@
-package com.example.securityandjpa.request;
+package com.example.securityandjpa.member.dto;
 
-import com.example.securityandjpa.domain.Role;
+import com.example.securityandjpa.member.domain.Role;
 import lombok.Builder;
 
 @Builder

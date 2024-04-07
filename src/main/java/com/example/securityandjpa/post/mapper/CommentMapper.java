@@ -1,7 +1,8 @@
-package com.example.securityandjpa.mapper;
+package com.example.securityandjpa.post.mapper;
 
-import com.example.securityandjpa.domain.Comment;
-import com.example.securityandjpa.response.CommentResponse;
+import com.example.securityandjpa.member.mapper.MemberMapper;
+import com.example.securityandjpa.post.domain.Comment;
+import com.example.securityandjpa.post.dto.CommentResponse;
 
 public class CommentMapper {
 
@@ -9,7 +10,7 @@ public class CommentMapper {
         return CommentResponse.builder()
             .id(comment.getId())
             .content(comment.getContent())
-            .createdBy(comment.getCreatedBy().toDto())
+            .createdBy(MemberMapper.toResponse(comment.getCreatedBy()))
             .createdAt(comment.getCreatedAt())
             .modifiedAt(comment.getModifiedAt())
             .build();

@@ -1,6 +1,5 @@
-package com.example.securityandjpa.domain;
+package com.example.securityandjpa.member.domain;
 
-import com.example.securityandjpa.response.MemberResponse;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -41,7 +40,7 @@ public class Member implements UserDetails {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Role roles;
+    private Role role;
 
     @Column(nullable = false)
     private boolean isEnabled;
@@ -54,7 +53,7 @@ public class Member implements UserDetails {
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority(roles.getAuthority()));
+        authorities.add(new SimpleGrantedAuthority(role.getAuthority()));
         return authorities;
     }
 
@@ -70,12 +69,7 @@ public class Member implements UserDetails {
         return false;
     }
 
-    public MemberResponse toDto() {
-        return MemberResponse.builder()
-            .username(username)
-            .nickname(nickname)
-            .role(roles)
-            .createdAt(createdAt)
-            .build();
+    public void update(Member member) {
+        this.nickname = member.getNickname();
     }
 }

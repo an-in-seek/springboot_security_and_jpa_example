@@ -1,6 +1,6 @@
 package com.example.securityandjpa.config;
 
-import com.example.securityandjpa.domain.Member;
+import com.example.securityandjpa.member.domain.Member;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;

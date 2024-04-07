@@ -1,9 +1,9 @@
-package com.example.securityandjpa.service;
+package com.example.securityandjpa.post.service;
 
-import com.example.securityandjpa.domain.Post;
-import com.example.securityandjpa.mapper.PostMapper;
-import com.example.securityandjpa.repository.PostRepository;
-import com.example.securityandjpa.response.PostResponse;
+import com.example.securityandjpa.post.domain.Post;
+import com.example.securityandjpa.post.dto.PostResponse;
+import com.example.securityandjpa.post.mapper.PostMapper;
+import com.example.securityandjpa.post.repository.PostRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

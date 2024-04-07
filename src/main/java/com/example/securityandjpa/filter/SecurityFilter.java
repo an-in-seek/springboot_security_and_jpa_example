@@ -1,6 +1,6 @@
 package com.example.securityandjpa.filter;
 
-import com.example.securityandjpa.service.MemberService;
+import com.example.securityandjpa.member.service.MemberService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
